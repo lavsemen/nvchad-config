@@ -4,21 +4,21 @@ local M = {}
 local servers = {
 	html = {},
 	cssls = {},
-	tsserver = {},
+	ts_ls = {},
 	lua_ls = {},
 	astro = {},
 	tailwindcss = {},
 	gdscript = {},
 	gopls = {},
-  volar = {
-    on_attach = on_attach,
-    filetypes = { "typescript", "javascript", "javascriptreact", "typescriptreact", "vue" },
-    init_options = {
-      vue = {
-        hybridMode = false,
-      },
-    },
-  }
+	volar = {
+		on_attach = on_attach,
+		filetypes = { "typescript", "javascript", "javascriptreact", "typescriptreact", "vue" },
+		init_options = {
+			vue = {
+				hybridMode = false,
+			},
+		},
+	},
 }
 local map = vim.keymap.set
 
@@ -33,6 +33,8 @@ M.on_attach = function(_, bufnr)
 	map("n", "gi", vim.lsp.buf.implementation, opts("Go to implementation"))
 	map("n", "<leader>wa", vim.lsp.buf.add_workspace_folder, opts("Add workspace folder"))
 	map("n", "<leader>wr", vim.lsp.buf.remove_workspace_folder, opts("Remove workspace folder"))
+
+	map("n", "<leader>ws", "<cmd>w<cr>", opts("Save Changes"))
 
 	map("n", "<leader>wl", function()
 		print(vim.inspect(vim.lsp.buf.list_workspace_folders()))

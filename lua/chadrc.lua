@@ -3,8 +3,9 @@ local M = {}
 local highlights = require("highlights")
 
 M.ui = {
-	theme = "ashes",
+	theme = "bearded-arc",
 	hl_override = highlights.override,
+  transparency = true,
 
 	-- To fit with nvim-tree
 	tabufline = {

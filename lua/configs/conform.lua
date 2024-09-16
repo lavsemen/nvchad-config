@@ -12,13 +12,14 @@ local options = {
 		css = { { "prettierd", "prettier" } },
 		astro = { { "prettierd", "prettier" } },
 		tailwindcss = { { "prettierd", "prettier" } },
+		vue = { { "prettierd", "prettier" } },
 	},
 
-    format_on_save = {
-    -- These options will be passed to conform.format()
-    timeout_ms = 500,
-    lsp_fallback = true,
-  },
-  }
+	format_on_save = {
+		-- These options will be passed to conform.format()
+		timeout_ms = 500,
+		lsp_fallback = true,
+	},
+}
 
 require("conform").setup(options)

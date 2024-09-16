@@ -1,4 +1,4 @@
--- User for NvimTree
+--User for NvimTree
 local gwidth = vim.api.nvim_list_uis()[1].width
 local gheight = vim.api.nvim_list_uis()[1].height
 local width = 60
@@ -223,6 +223,7 @@ return {
 		"nvim-tree/nvim-tree.lua",
 		event = "VeryLazy",
 		opts = function(_, opts)
+			opts.git = { ignore = false }
 			opts.view.float = {
 				enable = true,
 				quit_on_focus_loss = true,
@@ -346,6 +347,7 @@ return {
 	},
 	{
 		"stevearc/conform.nvim",
+		event = "BufWritePre",
 		config = function()
 			require("configs.conform")
 		end,
@@ -520,6 +522,17 @@ return {
 			})
 
 			package_info.get_status()
+		end,
+	},
+	{
+		"Exafunction/codeium.nvim",
+		event = "VeryLazy",
+		dependencies = {
+			"nvim-lua/plenary.nvim",
+			"hrsh7th/nvim-cmp",
+		},
+		config = function()
+			require("codeium").setup({})
 		end,
 	},
 }
